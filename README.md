@@ -19,8 +19,9 @@
 
 
 ##  TODOs :
-- add a PUT support to add data to the DB and Elasticsearch
+- add HTTP PUT support to support adding data to the DB and Elasticsearch
 - add basic UI 
 - add a meaningful healthcheck
 - add a CA issued cert (https://letsencrypt.org/)
 - add a Postman collection to set up the data/run integration tests
+- add OAuth2 integration
