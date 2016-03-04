@@ -15,7 +15,7 @@
 2. Elasticsearch - the app is using Jest API to communicate with the Elasticsearch endpoint. Config parameters for the endpoint are provided in the config.yml file. To populate some sample data post a couple of records with "fname" and "lname" values defined to http://localhost:9200/hr/people, for example : 
 ```curl -v -XPOST -d'{"fname" : "Darth", "lname" : "Vader"}' localhost:9200/hr/people```
 3. SSL - using a self-signed cert, import the cert into your local keystore : ```keytool -import -trustcacerts -alias selfsigned -file selfsigned.crt -keystore cacerts``` (under the ```jre/lib/security``` directory)
-## TODOs :
+##  TODOs :
 - add a PUT support to add data to the DB and Elasticsearch
 - add basic UI 
 - add a meaningful healthcheck
