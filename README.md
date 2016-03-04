@@ -10,7 +10,7 @@
 4. HTTP GET - response driven by the Elasticsearch-stored data : ```curl -v http://localhost:8088/elasticppl```
 5. HTTPS GET - static response : ```curl -k https://localhost:8443/hello```
 
-## Config notes:
+##  Config notes:
 1. RDBMS - the app will look for a local instance of MySQL on port 3306. The database and user credentials it's looking for are driven by the values in config.yml. DDL and sample data seed script are located in ```/src/main/resources```.
 2. Elasticsearch - the app is using Jest API to communicate with the Elasticsearch endpoint. Config parameters for the endpoint are provided in the config.yml file. To populate some sample data post a couple of records with "fname" and "lname" values defined to http://localhost:9200/hr/people, for example : 
 ```curl -v -XPOST -d'{"fname" : "Darth", "lname" : "Vader"}' localhost:9200/hr/people```
