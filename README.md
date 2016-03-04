@@ -1,4 +1,4 @@
-# Basic DropWizard App
+# Basic Dropwizard App
 ## To run : 
 1. clone the repo
 2. run ```mvn package``` against the master pom
