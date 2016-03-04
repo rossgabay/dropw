@@ -1,8 +1,8 @@
 # Basic DropWizard App
 ## To run : 
 1. clone the repo
-2. run mvn package against the master pom
-3. java -jar target/dropw-1.0-SNAPSHOT.jar server config.yml
+2. run ```mvn package``` against the master pom
+3. ```java -jar target/dropw-1.0-SNAPSHOT.jar server config.yml```
 
 ## Features/Supported Use Cases :
 1. Basic HTTP GET - static response : ```curl -v http://localhost:8088/hello```
