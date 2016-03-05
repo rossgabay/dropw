@@ -27,3 +27,4 @@
 - add a CA issued cert (https://letsencrypt.org/)
 - add a Postman collection to set up the data/run integration tests
 - add OAuth2 integration
+- create a branch with H2 DB to simplify deployment/configs
