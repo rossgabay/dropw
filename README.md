@@ -2,7 +2,8 @@
 ## To run : 
 1. clone the repo
 2. run ```mvn package``` against the master pom
-3. ```java -jar target/dropw-1.0-SNAPSHOT.jar server config.yml```
+3. make sure configs are set to reflect your local setup
+4. ```java -jar target/dropw-1.0-SNAPSHOT.jar server config.yml```
 
 ## Features/Supported Use Cases :
 1. Basic HTTP GET - static response : ```curl -v http://localhost:8088/hello```
@@ -10,6 +11,7 @@
 3. HTTP GET - response driven by the MySQL-stored data : ```curl -v http://localhost:8088/people```
 4. HTTP GET - response driven by the Elasticsearch-stored data : ```curl -v http://localhost:8088/elasticppl```
 5. HTTPS GET - static response : ```curl -k https://localhost:8443/hello```
+6. UI support -  there's a CORS filter registered with Dropwizard in the App to suppress the Same Origin Policy. A simple HTML page in the ```drop_ui``` directory demonstrates usage of AngularJS/Ajax and basic Bootstrap styling, making a call to the /elasticppl endpoint exposed by the app.
 
 ##  Config notes:
 1. RDBMS - the app will look for a local instance of MySQL on port 3306. The database and user credentials it's looking for are driven by the values in config.yml. DDL and sample data seed script are located in ```/src/main/resources```.
@@ -20,7 +22,7 @@
 
 ##  TODOs :
 - add HTTP PUT support to support adding data to the DB and Elasticsearch
-- add basic UI 
+- expand basic UI 
 - add a meaningful healthcheck
 - add a CA issued cert (https://letsencrypt.org/)
 - add a Postman collection to set up the data/run integration tests
