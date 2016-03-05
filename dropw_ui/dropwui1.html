@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple AngularJS/Ajax/Bootstrap UI</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+  </head>
+  <body>
+    <body ng-app="myapp">
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Simple AngularJS/Ajax/Bootstrap UI</h1>
+        <p class="lead">Click the button below to send AJAX HTTP GET request to the <em>http://localhost:8088/elasticppl</em> endpoint.</p>
+        <div ng-controller="MyController" >
+          <button ng-click="myData.doClick(item, $event)">Send AJAX Request to the /elasticppl endpoint</button>
+          <br/>
+          <p class="lead">
+           Data from server: {{myData.fromServer}}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  <script>
+    angular.module("myapp", [])
+        .controller("MyController", function($scope, $http) {
+            $scope.myData = {};
+            $scope.myData.doClick = function(item, event) {
+
+                var responsePromise = $http.get("http://localhost:8088/elasticppl");
+
+                responsePromise.success(function(data, status, headers, config) {
+                    $scope.myData.fromServer = data;
+                });
+                responsePromise.error(function(data, status, headers, config) {
+                    alert("error occured, check the XHR log");
+                });
+            }
+
+
+        } );
+  </script>
+
+</body>
+
+</html>
