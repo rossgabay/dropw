@@ -26,10 +26,6 @@ import org.slf4j.LoggerFactory;
 public class ElasticPplResource {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ElasticPplResource.class);
 	
-	//private static final String ELASTIC_URL = "http://localhost:9200";
-	//private static final String TYPE_NAME = "people";
-    //private static final String INDEX_NAME = "hr";
-	
 	private final String ELASTIC_URL;
 	private final String TYPE_NAME;
     private String INDEX_NAME;
@@ -79,12 +75,16 @@ public class ElasticPplResource {
         
         ObjectMapper mapper = new ObjectMapper();
         StringBuffer sb = new StringBuffer();
+        
+        sb.append("[");
         for (PersonDomain pd : ppl) {
         	String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(pd);
-        	sb.append(jsonString);
-            LOGGER.info(jsonString);
+        	sb.append(jsonString + ",");
         }
         
+        sb.replace(sb.length()-1, sb.length()-1, "]");
+        sb.setLength(sb.length() - 1);
+        LOGGER.info(sb.toString());
         return sb.toString();
     }
 }
