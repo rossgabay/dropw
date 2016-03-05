@@ -1,6 +1,15 @@
 package com.rgabay.dropw;
 
 
+import java.util.EnumSet;
+
+import javax.servlet.DispatcherType;
+import javax.servlet.FilterRegistration;
+
+import org.eclipse.jetty.servlets.CrossOriginFilter;
+
+import static org.eclipse.jetty.servlets.CrossOriginFilter.*;
+
 import com.rgabay.dropw.auth.HelloAuthenticator;
 import com.rgabay.dropw.core.User;
 import com.rgabay.dropw.health.DwHealthCheck;
@@ -56,6 +65,14 @@ public class DropwApplication extends Application<DropwConfiguration> {
     public void run(final DropwConfiguration configuration,
                     final Environment environment) {
     	
+    	FilterRegistration.Dynamic filter = environment.servlets().addFilter("CORSFilter", CrossOriginFilter.class);
+
+        filter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), false, environment.getApplicationContext().getContextPath() + "*");
+        filter.setInitParameter(ALLOWED_METHODS_PARAM, "GET,PUT,POST,OPTIONS");
+        filter.setInitParameter(ALLOWED_ORIGINS_PARAM, "*");
+        filter.setInitParameter(ALLOWED_HEADERS_PARAM, "Origin, Content-Type, Accept");
+        filter.setInitParameter(ALLOW_CREDENTIALS_PARAM, "true");
+        
     				final DwHealthCheck healthCheck = new DwHealthCheck();
     				environment.healthChecks().register("none", healthCheck);
     	
