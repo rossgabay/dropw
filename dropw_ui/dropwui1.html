@@ -25,6 +25,11 @@
           <p class="lead">
            Data from server: {{myData.fromServer}}
           </p>
+            <ul>
+              <li class="lead" ng-repeat="item in myData.fromServer">
+                 {{item['id']}},{{item['fname']}},{{item['lname']}}
+              </li>
+           </ul>
         </div>
       </div>
 
@@ -48,8 +53,8 @@
 
 
         } );
-  </script>
+    </script>
 
-</body>
+  </body>
 
 </html>
